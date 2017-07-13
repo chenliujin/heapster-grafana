@@ -8,11 +8,11 @@ export GF_SERVER_PROTOCOL=${GF_SERVER_PROTOCOL:-http}
 echo "Starting a utility program that will configure Grafana"
 setup_grafana >/dev/stdout 2>/dev/stderr &
 
-export GF_AUTH_ANONYMOUS_ENABLED=false
-
 echo "Starting Grafana in foreground mode"
 exec /usr/sbin/grafana-server \
   --homepath=/usr/share/grafana \
   --config=/etc/grafana/grafana.ini \
   cfg:default.paths.data=/var/lib/grafana \
   cfg:default.paths.logs=/var/log/grafana
+
+export GF_AUTH_ANONYMOUS_ENABLED=false
